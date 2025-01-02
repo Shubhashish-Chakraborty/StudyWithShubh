@@ -31,7 +31,7 @@ export const Navbar = () => {
 
                 {/* LogIN Button for Mobile */}
                 <div className="md:hidden">
-                    <Button variant="primary" text="LogIN" startIcon={<Login />} />
+                    <Button onClick={() => {navigate('login')}} variant="primary" text="LogIN" startIcon={<Login />} />
                 </div>
 
                 {/* Navigation Links for Desktop */}
@@ -67,7 +67,7 @@ export const Navbar = () => {
 
                 {/* Buttons Section for Desktop */}
                 <div className="hidden md:flex items-center gap-3">
-                    <Button variant="primary" text="LogIN" startIcon={<Login />} />
+                    <Button onClick={() => {navigate('login')}} variant="primary" text="LogIN" startIcon={<Login />} />
                     <div
                         onClick={() =>
                             window.open("https://github.com/Shubhashish-Chakraborty/StudyWithShubh")

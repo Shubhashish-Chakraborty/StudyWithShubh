@@ -10,7 +10,7 @@ export const Home = () => {
         <div className="flex justify-center mt-16 px-4 md:px-8 bg-custom-1 min-h-screen">
             <div className="flex flex-col justify-center gap-10 max-w-4xl w-full">
                 {/* Title Section */}
-                <div className="text-white text-center font-bold text-3xl md:text-4xl leading-tight">
+                <div className="text-white text-center font-bold text-3xl md:text-4xl hover:scale-105 transition-all duration-200 cursor-pointer leading-tight">
                     "Empower Your Tech Journey with
                     <span
                         onClick={() => navigate("about")}
