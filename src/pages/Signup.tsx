@@ -35,7 +35,7 @@ export const SignupPage = () => {
 
         try {
             // API request to the backend
-            const response = await axios.post(`${BACKEND_URL}/api/auth/signup`, {
+            const response = await axios.post(`${BACKEND_URL}/api/signup`, {
                 username,
                 email,
                 password,
