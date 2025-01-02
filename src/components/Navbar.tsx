@@ -1,31 +1,41 @@
+import { About } from "../icons/NavbarIcons/About";
+import { DemoLectures } from "../icons/NavbarIcons/DemoLectures";
 import { Home } from "../icons/NavbarIcons/Home";
 import { Login } from "../icons/NavbarIcons/Login";
 import { Github } from "../icons/SocialIcons/Github";
 import { Button } from "./ui/Button";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Menu } from "../icons/NavbarIcons/Menu";
 
-const commonNavbarStyles = "flex flex-col items-center py-1 px-5 rounded-xl cursor-pointer font-bold hover:-translate-y-2 transition-all duration-500 shadow-md";
+const commonNavbarStyles =
+    "flex flex-col items-center py-1 px-5 rounded-xl cursor-pointer font-bold hover:-translate-y-2 transition-all duration-500 shadow-md";
 
 export const Navbar = () => {
     const navigate = useNavigate();
     const location = useLocation();
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-    // Determine the active tab based on the current path
     const isActive = (path: string) => location.pathname === path;
 
     return (
         <>
-            <div className="bg-custom-2 flex justify-between items-center">
+            <div className="bg-custom-2 flex justify-between items-center px-4 py-4 md:px-16 md:py-8">
                 {/* Logo Section */}
                 <div
                     className="cursor-pointer hover:-translate-y-2 transition-all duration-500"
                     onClick={() => navigate('/')}
                 >
-                    <img src="/swsBrandImg.png" className="w-48" alt="SwsBrandLogo!!" />
+                    <img src="/swsBrandImg.png" className="w-32 md:w-48" alt="SwsBrandLogo!!" />
                 </div>
 
-                {/* Navigation Links */}
-                <div className="flex justify-center px-16 py-8 gap-6 text-white">
+                {/* LogIN Button for Mobile */}
+                <div className="md:hidden">
+                    <Button variant="primary" text="LogIN" startIcon={<Login />} />
+                </div>
+
+                {/* Navigation Links for Desktop */}
+                <div className="hidden md:flex justify-center gap-6 text-white">
                     <div
                         onClick={() => navigate('/')}
                         className={`${commonNavbarStyles} ${
@@ -41,7 +51,7 @@ export const Navbar = () => {
                             isActive('/demo') ? 'bg-blue-700 text-white hover:bg-blue-800' : 'bg-white text-black hover:bg-blue-700 hover:text-white'
                         }`}
                     >
-                        <Home />
+                        <DemoLectures />
                         Demo Lectures
                     </div>
                     <div
@@ -50,16 +60,14 @@ export const Navbar = () => {
                             isActive('/about') ? 'bg-blue-700 text-white hover:bg-blue-800' : 'bg-white text-black hover:bg-blue-700 hover:text-white'
                         }`}
                     >
-                        <Home />
+                        <About />
                         About
                     </div>
                 </div>
 
-                {/* Buttons Section */}
-                <div className="flex items-center gap-3">
-                    <div>
-                        <Button variant="primary" text="LogIN" startIcon={<Login />} />
-                    </div>
+                {/* Buttons Section for Desktop */}
+                <div className="hidden md:flex items-center gap-3">
+                    <Button variant="primary" text="LogIN" startIcon={<Login />} />
                     <div
                         onClick={() =>
                             window.open("https://github.com/Shubhashish-Chakraborty/StudyWithShubh")
@@ -68,7 +76,67 @@ export const Navbar = () => {
                         <Button variant="secondary" text="Github" endIcon={<Github />} />
                     </div>
                 </div>
+
+                {/* Mobile Menu Toggle Icon */}
+                <div
+                    className="flex md:hidden cursor-pointer text-white"
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                >
+                    <Menu />
+                </div>
             </div>
+
+            {/* Dropdown Menu for Mobile */}
+            {isMenuOpen && (
+                <div className="md:hidden bg-custom-2 text-white flex flex-col items-center gap-4 py-4">
+                    <div
+                        onClick={() => {
+                            navigate('/');
+                            setIsMenuOpen(false);
+                        }}
+                        className={`${commonNavbarStyles} ${
+                            isActive('/') ? 'bg-blue-700 text-white hover:bg-blue-800' : 'bg-white text-black hover:bg-blue-700 hover:text-white'
+                        }`}
+                    >
+                        <Home />
+                        Home
+                    </div>
+                    <div
+                        onClick={() => {
+                            navigate('/demo');
+                            setIsMenuOpen(false);
+                        }}
+                        className={`${commonNavbarStyles} ${
+                            isActive('/demo') ? 'bg-blue-700 text-white hover:bg-blue-800' : 'bg-white text-black hover:bg-blue-700 hover:text-white'
+                        }`}
+                    >
+                        <DemoLectures />
+                        Demo Lectures
+                    </div>
+                    <div
+                        onClick={() => {
+                            navigate('/about');
+                            setIsMenuOpen(false);
+                        }}
+                        className={`${commonNavbarStyles} ${
+                            isActive('/about') ? 'bg-blue-700 text-white hover:bg-blue-800' : 'bg-white text-black hover:bg-blue-700 hover:text-white'
+                        }`}
+                    >
+                        <div className="flex flex-col items-center">
+                            <About />
+                            <span>About</span>
+                        </div>
+                    </div>
+                    <div
+                        onClick={() => {
+                            window.open("https://github.com/Shubhashish-Chakraborty/StudyWithShubh");
+                            setIsMenuOpen(false);
+                        }}
+                    >
+                        <Button variant="secondary" text="Github" endIcon={<Github />} />
+                    </div>
+                </div>
+            )}
         </>
     );
 };

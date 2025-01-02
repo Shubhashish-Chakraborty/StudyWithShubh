@@ -7,11 +7,11 @@ export const DemoLectureBox = ({ videoDriveUrl, title, notesPdfUrl }: {
     notesPdfUrl?: string;
 }) => {
     return (
-        <div className="flex flex-col bg-slate-900 shadow-lg p-4 m-4 rounded-lg max-w-sm w-full hover:-translate-y-2 transition-all duration-500 cursor-pointer">
+        <div className="flex flex-col bg-slate-800 shadow-lg p-4 m-4 rounded-lg w-full max-w-xs sm:max-w-sm lg:max-w-md hover:-translate-y-2 transition-all duration-500 cursor-pointer">
             {/* Video Section */}
-            <div className="mb-4">
+            <div className="mb-4 aspect-w-16 aspect-h-9">
                 <iframe 
-                    className="w-full h-48 rounded-md" 
+                    className="w-full h-full rounded-md" 
                     src={videoDriveUrl} 
                     frameBorder="0" 
                     allow="autoplay" 
@@ -29,7 +29,7 @@ export const DemoLectureBox = ({ videoDriveUrl, title, notesPdfUrl }: {
                         variant="primary" 
                         text="Notes" 
                         endIcon={<Redirect />}
-                        onClick={() => {window.open(notesPdfUrl)}}
+                        onClick={() => { window.open(notesPdfUrl) }}
                     />
                 </div>
             )}
