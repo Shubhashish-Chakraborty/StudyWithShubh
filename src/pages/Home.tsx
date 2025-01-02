@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "../components/ui/Button";
 import { Redirect } from "../icons/others/Redirect";
+import { CourseCard } from "../components/ui/CourseCard";
 
 export const Home = () => {
     const navigate = useNavigate();
@@ -56,11 +57,13 @@ export const Home = () => {
                         </div>
 
                         <div className="w-full max-w-2xl px-4 bg-gray-800 py-6 rounded-lg shadow-md">
-                            {/* Placeholder for Course Boxes */}
-                            <p className="text-center text-custom-4 text-sm md:text-base">
-                                This is where the course boxes will be added in the future.
-                            </p>
+                            <div className="flex flex-wrap justify-center gap-6">
+                                <CourseCard title="hello world" thumbnail="./courseThumbnails/csPython.png" />
+                                <CourseCard title="hello world" thumbnail="./courseThumbnails/ipPython.png" />
+                                <CourseCard title="hello world" thumbnail="./courseThumbnails/ipMysql.png" />
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
