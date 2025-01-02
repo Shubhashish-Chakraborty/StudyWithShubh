@@ -19,7 +19,7 @@ export const Ip11 = () => {
         // Fetch course details
         const fetchCourse = async () => {
             try {
-                const response = await axios.get(`${BACKEND_URL}/api/auth/courses/ip11`, {
+                const response = await axios.get(`${BACKEND_URL}/api/courses/ip11`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -38,13 +38,13 @@ export const Ip11 = () => {
     }
 
     if (!course) {
-        return <div>Loading...</div>;
+        return <div className="text-white text-center">Loading...</div>;
     }
 
     return (
         <div className="my-12 bg-custom-1 flex items-center justify-center px-4">
             <div className="bg-gray-800 p-8 rounded-lg shadow-md w-full max-w-3xl">
-                <h1 className="text-3xl font-bold text-white mb-4">{course.title}</h1>
+                {/* <h1 className="text-3xl font-bold text-white mb-4">{course.title}</h1> */}
                 <p className="text-white mb-6">{course.description}</p>
 
                 <div className="space-y-4">
@@ -57,10 +57,10 @@ export const Ip11 = () => {
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                Watch Video
+                                Watch Lecture
                             </a>
                             <br />
-                            <button className="bg-blue-500 text-white mt-2 py-2 px-4 rounded-md">
+                            <button onClick={() => {window.open(lecture.notesPdf)}} className="bg-blue-500 text-white mt-2 py-2 px-4 rounded-md">
                                 Download Notes
                             </button>
                         </div>
