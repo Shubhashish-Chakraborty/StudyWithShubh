@@ -18,7 +18,7 @@ export const CourseCard = ({ thumbnail, title }: { thumbnail: string; title: str
                 <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
             </div>
             <div className="flex justify-center">
-                <Button variant="secondary" text="Apply" endIcon={<Redirect/>}/>
+                <Button variant="secondary" text="Learn" endIcon={<Redirect/>}/>
             </div>
         </div>
     );
