@@ -1,10 +1,56 @@
+import { useRef, useState } from "react";
 import { Button } from "../components/ui/Button";
 import { Input } from "../components/ui/Input";
 import { useNavigate } from "react-router-dom";
 import { Redirect } from "../icons/others/Redirect";
+import axios from "axios";
+import { BACKEND_URL } from "../config";
 
 export const SignupPage = () => {
     const navigate = useNavigate();
+
+    // References for input fields
+    const usernameRef = useRef<HTMLInputElement>(null);
+    const emailRef = useRef<HTMLInputElement>(null);
+    const passwordRef = useRef<HTMLInputElement>(null);
+
+    // State for error and success messages
+    const [error, setError] = useState("");
+    const [success, setSuccess] = useState("");
+
+    // Function to handle form submission
+    const handleSignup = async () => {
+        setError("");
+        setSuccess("");
+
+        const username = usernameRef.current?.value;
+        const email = emailRef.current?.value;
+        const password = passwordRef.current?.value;
+
+        // Basic validation
+        if (!username || !email || !password) {
+            setError("All fields are required.");
+            return;
+        }
+
+        try {
+            // API request to the backend
+            const response = await axios.post(`${BACKEND_URL}/api/auth/signup`, {
+                username,
+                email,
+                password,
+            });
+
+            if (response.status === 201) {
+                setSuccess("Account created successfully!");
+                setTimeout(() => navigate("/login"), 2000); // Redirect after 2 seconds
+            } else {
+                setError("Something went wrong. Please try again.");
+            }
+        } catch (err:any) {
+            setError(err.response?.data?.message || "An error occurred.");
+        }
+    };
 
     return (
         <div className="my-12 flex items-center justify-center bg-custom-1 px-4">
@@ -16,27 +62,30 @@ export const SignupPage = () => {
 
                 {/* Input Fields */}
                 <div className="space-y-4">
-                    <Input type="text" placeholder="Enter Username" />
-                    <Input type="email" placeholder="Enter email" />
-                    <Input type="password" placeholder="Enter password" />
-
-                    {/* Sign-Up Button */}
-                    <div className="flex justify-center">
-                        <Button
-                            text="Sign Up"
-                            variant="primary"
-                            endIcon={<Redirect />}
-                        />
-                    </div>
+                    <Input ref={usernameRef} type="text" placeholder="Enter Username" />
+                    <Input ref={emailRef} type="email" placeholder="Enter email" />
+                    <Input ref={passwordRef} type="password" placeholder="Enter password" />
                 </div>
 
-                {/* Sign-Up Section */}
+                {/* Error and Success Messages */}
+                {error && <p className="text-red-500 text-center mt-4">{error}</p>}
+                {success && <p className="text-green-500 text-center mt-4">{success}</p>}
+
+                {/* Sign-Up Button */}
+                <div className="flex justify-center mt-6">
+                    <Button
+                        text="Sign Up"
+                        variant="primary"
+                        endIcon={<Redirect />}
+                        onClick={handleSignup}
+                    />
+                </div>
+
+                {/* Login Section */}
                 <p className="text-white text-center mt-6">
                     Already have an account?{" "}
                     <span
-                        onClick={() => {
-                            navigate("/login");
-                        }}
+                        onClick={() => navigate("/login")}
                         className="text-blue-400 font-bold cursor-pointer hover:underline"
                     >
                         Login

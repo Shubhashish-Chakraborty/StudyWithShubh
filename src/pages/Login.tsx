@@ -1,31 +1,78 @@
+import { useRef, useState } from "react";
 import { Button } from "../components/ui/Button";
 import { Input } from "../components/ui/Input";
 import { Login } from "../icons/NavbarIcons/Login";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { BACKEND_URL } from "../config";
 
 export const LoginPage = () => {
     const navigate = useNavigate();
 
+    const emailRef = useRef<HTMLInputElement>(null);
+    const passwordRef = useRef<HTMLInputElement>(null);
+
+    const [error, setError] = useState("");
+    const [message, setMessage] = useState("");
+
+    const handleLogin = async () => {
+        setError("");
+        setMessage("");
+
+        const email = emailRef.current?.value;
+        const password = passwordRef.current?.value;
+
+        if (!email || !password) {
+            setError("Both email and password are required.");
+            return;
+        }
+
+        try {
+            const response = await axios.post(`${BACKEND_URL}/api/auth/login`, {
+                email,
+                password,
+            });
+
+            const { token, courses } = response.data;
+
+            // Store token in localStorage
+            localStorage.setItem("token", token);
+
+            if (!courses || courses.length === 0) {
+                setMessage("You are not assigned the course, wait for the admin to assign.");
+            } else {
+                // Redirect to the first course page (you can customize this if needed)
+                navigate(`/courses/${courses}`);
+            }
+        } catch (err: any) {
+            setError(err.response?.data?.message || "Login failed. Please try again.");
+        }
+    };
+
     return (
         <div className="my-12 bg-custom-1 flex items-center justify-center px-4">
             <div className="bg-gray-800 p-8 rounded-lg shadow-md w-full max-w-md sm:w-96 md:w-80 lg:w-96 xl:w-96">
-                {/* Header */}
                 <h1 className="text-2xl font-bold text-white text-center mb-6">
                     Login to Your Account
                 </h1>
 
-                {/* Input Fields */}
                 <div className="space-y-4">
-                    <Input type="email" placeholder="Enter email" />
-                    <Input type="password" placeholder="Enter password" />
+                    <Input type="email" placeholder="Enter email" ref={emailRef} />
+                    <Input type="password" placeholder="Enter password" ref={passwordRef} />
 
-                    {/* Login Button */}
+                    {error && <p className="text-red-500 text-center mt-4">{error}</p>}
+                    {message && <p className="text-yellow-500 text-center mt-4">{message}</p>}
+
                     <div className="flex justify-center">
-                        <Button text="Login" variant="primary" endIcon={<Login />} />
+                        <Button
+                            text="Login"
+                            variant="primary"
+                            endIcon={<Login />}
+                            onClick={handleLogin}
+                        />
                     </div>
                 </div>
 
-                {/* Sign-Up Section */}
                 <p className="text-white text-center mt-6">
                     Don’t have an account?{" "}
                     <span
