@@ -18,6 +18,16 @@ export const Navbar = () => {
 
     const isActive = (path: string) => location.pathname === path;
 
+    // Check if the user is logged in by checking for a token in localStorage (or sessionStorage)
+    const isLoggedIn = localStorage.getItem('token') !== null;
+
+    const handleLogout = () => {
+        // Remove token from localStorage (or sessionStorage)
+        localStorage.removeItem('token');
+        // Redirect user to the homepage or login page
+        navigate('/');
+    };
+
     return (
         <>
             <div className="bg-custom-2 flex justify-between items-center px-4 py-4 md:px-16 md:py-8">
@@ -31,7 +41,15 @@ export const Navbar = () => {
 
                 {/* LogIN Button for Mobile */}
                 <div className="md:hidden">
-                    <Button onClick={() => {navigate('login')}} variant="primary" text="LogIN" startIcon={<Login />} />
+                    {/* Only show the Login button if the user is not logged in */}
+                    {!isLoggedIn && (
+                        <Button onClick={() => navigate('login')} variant="primary" text="LogIN" startIcon={<Login />} />
+                    )}
+
+                    {/* Dont Show the Logout button if the user is logged in */}
+                    {/* {isLoggedIn && (
+                        <Button onClick={handleLogout} variant="other" text="LogOUT" />
+                    )} */}
                 </div>
 
                 {/* Navigation Links for Desktop */}
@@ -67,7 +85,11 @@ export const Navbar = () => {
 
                 {/* Buttons Section for Desktop */}
                 <div className="hidden md:flex items-center gap-3">
-                    <Button onClick={() => {navigate('login')}} variant="primary" text="LogIN" startIcon={<Login />} />
+                    {!isLoggedIn ? (
+                        <Button onClick={() => navigate('login')} variant="primary" text="LogIN" startIcon={<Login />} />
+                    ) : (
+                        <Button onClick={handleLogout} variant="other" text="LogOUT" />
+                    )}
                     <div
                         onClick={() =>
                             window.open("https://github.com/Shubhashish-Chakraborty/StudyWithShubh")
@@ -135,6 +157,12 @@ export const Navbar = () => {
                     >
                         <Button variant="secondary" text="Github" endIcon={<Github />} />
                     </div>
+                    {/* LogOut Button in Mobile */}
+                    {isLoggedIn && (
+                        <div onClick={handleLogout}>
+                            <Button variant="other" text="LogOUT" />
+                        </div>
+                    )}
                 </div>
             )}
         </>

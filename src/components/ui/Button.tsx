@@ -2,14 +2,15 @@ import { ReactElement } from "react";
 
 const variantStyle = {
     primary : "bg-blue-600 text-white font-bold hover:bg-blue-900",
-    secondary: "bg-custom-3 border border-blue-500 text-purple-200 font-bold"
+    secondary: "bg-custom-3 border border-blue-500 text-purple-200 font-bold",
+    other: "bg-red-700 border border-black text-white font-bold"
 }
 
 
 const defaultStyles = "flex items-center px-4 py-2 rounded-md transition-all duration-500 hover:-translate-y-2";
 
 export const Button = ({variant , text , startIcon , endIcon , onClick}: {
-    variant: "primary" | "secondary";
+    variant: "primary" | "secondary" | "other";
     text: string;
     startIcon?: ReactElement;
     endIcon?: ReactElement;
