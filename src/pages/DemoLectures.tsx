@@ -20,6 +20,14 @@ export const DemoLectures = () => {
                     title="Informatics Practices || Class-11th || Lecture-2: (7th September 2024)" 
                     videoDriveUrl="https://drive.google.com/file/d/1vGHhAwnKZ60TOlDlq3NIiDIs9xsdKdgd/preview" 
                 />
+                <DemoLectureBox 
+                    title="Short Demo for Computer Science Students" 
+                    videoDriveUrl="https://drive.google.com/file/d/1KC0Mijq9LKxgsgXhnY7BXnLcwaVMb2Ko/preview" 
+                />
+                <DemoLectureBox 
+                    title="Download & Install MySQL on Windows" 
+                    videoDriveUrl="https://drive.google.com/file/d/19Xh04gThc_ZEdKy_Up8SLc43QxOpxc7w/preview" 
+                />
             </div>
         </div>
     );
