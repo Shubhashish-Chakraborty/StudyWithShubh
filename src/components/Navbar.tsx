@@ -30,7 +30,7 @@ export const Navbar = () => {
 
     return (
         <>
-            <div className="bg-custom-2 flex justify-between items-center px-4 py-4 md:px-16 md:py-8">
+            <div className="bg-custom-2 sticky top-0 z-50 backdrop-blur-lg flex justify-between items-center px-4 py-4 md:px-16 md:py-8">
                 {/* Logo Section */}
                 <div
                     className="cursor-pointer hover:-translate-y-2 transition-all duration-500"
