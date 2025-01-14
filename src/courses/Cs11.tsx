@@ -3,7 +3,9 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { BACKEND_URL } from "../config";
 import { Button } from "../components/ui/Button";
-import { Redirect } from "../icons/others/Redirect";
+import { NotFound } from "../icons/others/NotFound";
+import { File } from "../icons/others/File";
+import { Play } from "../icons/others/Play";
 
 export const Cs11 = () => {
     const [course, setCourse] = useState<any>(null);
@@ -47,7 +49,7 @@ export const Cs11 = () => {
         <div className="my-12 bg-custom-1 flex items-center justify-center px-4">
             <div className="bg-gray-800 p-8 rounded-lg shadow-md w-full max-w-full">
                 {/* <h1 className="text-3xl font-bold text-white mb-4">{course.title}</h1> */}
-                <p className="text-white mb-6 text-center text-2xl md:text-3xl">{course.description}</p>
+                <p className="text-white mb-6 text-center animate-bounce text-2xl md:text-3xl">{course.description}</p>
 
                 <div className="space-y-4">
                     {course.lectures.map((lecture: any, index: number) => (
@@ -64,9 +66,15 @@ export const Cs11 = () => {
                             
                             <div className="flex md:flex-row items-center flex-col justify-center gap-4">
 
-                                <Button variant="primary" text="Lecture" endIcon={<Redirect/>} onClick={() => {window.open(lecture.videoUrl)}}/>
+                                <Button variant="primary" text="Lecture" endIcon={<Play/>} onClick={() => {window.open(lecture.videoUrl)}}/>
                                 
-                                <Button variant="primary" text="Notes" endIcon={<Redirect/>} onClick={() => {window.open(lecture.notesPdf)}}/>
+                                {
+                                lecture.notesPdf != "NA"
+                                    ?
+                                    <Button variant="primary" text="Notes" endIcon={<File/>} onClick={() => {window.open(lecture.notesPdf)}}/>
+                                    :
+                                    <Button variant="notAllowed" text="Notes" endIcon={<NotFound/>}/>
+                                }
                         
                             </div>
                     
