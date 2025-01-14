@@ -2,6 +2,10 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { BACKEND_URL } from "../config";
+import { Button } from "../components/ui/Button";
+import { NotFound } from "../icons/others/NotFound";
+import { File } from "../icons/others/File";
+import { Play } from "../icons/others/Play";
 
 export const Ip11 = () => {
     const [course, setCourse] = useState<any>(null);
@@ -43,26 +47,29 @@ export const Ip11 = () => {
 
     return (
         <div className="my-12 bg-custom-1 flex items-center justify-center px-4">
-            <div className="bg-gray-800 p-8 rounded-lg shadow-md w-full max-w-3xl">
+            <div className="bg-gray-800 p-8 rounded-lg shadow-md w-full max-w-full">
                 {/* <h1 className="text-3xl font-bold text-white mb-4">{course.title}</h1> */}
-                <p className="text-white mb-6">{course.description}</p>
+                <p className="text-white mb-6 text-center animate-bounce text-2xl md:text-3xl">{course.description}</p>
 
                 <div className="space-y-4">
                     {course.lectures.map((lecture: any, index: number) => (
-                        <div key={index} className="bg-gray-700 p-4 rounded-md">
+                        <div key={index} className="bg-gray-700 p-4 text-center md:flex justify-between items-center rounded-md">
                             <h3 className="text-xl text-white">{lecture.title}</h3>
-                            <a
-                                href={lecture.videoUrl}
-                                className="text-blue-400 hover:underline"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                Watch Lecture
-                            </a>
-                            <br />
-                            <button onClick={() => {window.open(lecture.notesPdf)}} className="bg-blue-500 text-white mt-2 py-2 px-4 rounded-md">
-                                Download Notes
-                            </button>
+                            
+                            <div className="flex md:flex-row items-center flex-col justify-center gap-4">
+
+                                <Button variant="primary" text="Lecture" endIcon={<Play/>} onClick={() => {window.open(lecture.videoUrl)}}/>
+                                
+                                {
+                                lecture.notesPdf != "NA"
+                                    ?
+                                    <Button variant="primary" text="Notes" endIcon={<File/>} onClick={() => {window.open(lecture.notesPdf)}}/>
+                                    :
+                                    <Button variant="notAllowed" text="Notes" endIcon={<NotFound/>}/>
+                                }
+                        
+                            </div>
+                    
                         </div>
                     ))}
                 </div>

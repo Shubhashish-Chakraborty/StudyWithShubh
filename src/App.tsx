@@ -8,6 +8,7 @@ import { LoginPage } from "./pages/Login";
 import { SignupPage } from "./pages/Signup";
 
 import { Cs11 } from "./courses/Cs11";
+import { Ip11 } from "./courses/Ip11";
 
 export default function App() {
     return (
@@ -21,7 +22,7 @@ export default function App() {
                         <Route path="login" element={<LoginPage />} />
                         <Route path="signup" element={<SignupPage />} />
 
-                        {/* <Route path="/courses/ip11" element={<Ip11/>} /> */}
+                        <Route path="/courses/ip11" element={<Ip11/>} />
                         <Route path="/courses/cs11" element={<Cs11/>} />
                         
                         <Route path="*" element={<NotFound />} />
