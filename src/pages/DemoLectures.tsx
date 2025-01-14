@@ -13,6 +13,10 @@ export const DemoLectures = () => {
                     videoDriveUrl="https://drive.google.com/file/d/1q6lRU48zNtMYA05deWeiynG4XnP7LSP_/preview" 
                 />
                 <DemoLectureBox 
+                    title="All you Need Know to Get Started with Git & Github:" 
+                    videoDriveUrl="https://drive.google.com/file/d/15k11srcAQMlIlBvyqbEA2GViX8PwZ69W/preview" 
+                />
+                <DemoLectureBox 
                     title="Informatics Practices || Class-11th || Lecture-1: (1st September 2024)" 
                     videoDriveUrl="https://drive.google.com/file/d/1dTLRRLJu2QH_xy5XIWmg_iX_JZqkwbSn/preview" 
                 />
