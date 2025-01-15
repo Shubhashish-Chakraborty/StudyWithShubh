@@ -39,7 +39,8 @@ export const AdminLogin = () => {
             localStorage.setItem("token", token);
 
             if (!courses || courses.length === 0) {
-                setMessage("You are not assigned the course, wait for the admin to assign.");
+                // setMessage("You are not assigned the course, wait for the admin to assign.");
+                setMessage("You are not assigned the Admin Role yet, wait for Shubhashish to assign.");
             } else {
                 // Redirect to the first course page (you can customize this if needed)
                 navigate(`/courses/${courses}`);
