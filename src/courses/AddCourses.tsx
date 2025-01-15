@@ -26,31 +26,34 @@ export const AddCourses = () => {
         const title = titleRef.current?.value;
         const description = descriptionRef.current?.value;
         const lectureTitle = lectureTitleRef.current?.value;
-        const videoURL = videoURLRef.current?.value;
-        const notesURL = notesURLRef.current?.value;
-
-        if (!title || !lectureTitle || !videoURL) {
+        const videoUrl = videoURLRef.current?.value;
+        const notesPdf = notesURLRef.current?.value;
+    
+        if (!title || !lectureTitle || !videoUrl) {
             alert("Please fill in all required fields.");
             return;
         }
-
+    
         const courseData = {
             title,
             description,
             lectures: [
                 {
                     title: lectureTitle,
-                    videoURL,
-                    notesURL
+                    videoUrl: videoUrl,
+                    notesPdf: notesPdf
                 }
             ]
         };
-
+    
+        console.log("Sending Course Data:", courseData);
+    
         try {
             const token = localStorage.getItem("token");
             await axios.post(`${BACKEND_URL}/api/courses`, courseData, {
                 headers: {
-                    Authorization: `Bearer ${token}`
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json"  // Added header
                 }
             });
             alert("Course added successfully!");
@@ -59,24 +62,27 @@ export const AddCourses = () => {
             alert("Failed to add course.");
         }
     };
+    
 
     const handleUpdateCourse = async () => {
         const title = titleRef.current?.value;
         const lectureTitle = lectureTitleRef.current?.value;
-        const videoURL = videoURLRef.current?.value;
-        const notesURL = notesURLRef.current?.value;
-
-        if (!title || !lectureTitle || !videoURL) {
+        const videoUrl = videoURLRef.current?.value;
+        const notesPdf = notesURLRef.current?.value;
+    
+        if (!title || !lectureTitle || !videoUrl) {
             alert("Please fill in all required fields.");
             return;
         }
-
+    
         const newLecture = {
             title: lectureTitle,
-            videoURL: videoURL,
-            notesURL: notesURL
+            videoUrl: videoUrl,
+            notesPdf: notesPdf
         };
-
+    
+        console.log("Sending Data:", { title, newLecture });  // Debugging
+    
         try {
             const token = localStorage.getItem("token");
             await axios.patch(`${BACKEND_URL}/api/courses/update`, {
@@ -84,7 +90,8 @@ export const AddCourses = () => {
                 newLecture
             }, {
                 headers: {
-                    Authorization: `Bearer ${token}`
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json"
                 }
             });
             alert("Lecture updated successfully!");
@@ -93,6 +100,7 @@ export const AddCourses = () => {
             alert("Failed to update course.");
         }
     };
+    
 
     return (
         <div className="text-white">
