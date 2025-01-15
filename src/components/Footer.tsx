@@ -22,8 +22,8 @@ export const Footer = () => {
                         <ul className="space-y-2">
                             <li><a href="/" className="hover:text-blue-400">Home</a></li>
                             <li><a href="/about" className="hover:text-blue-400">About</a></li>
-                            {/* <li><a href="" className="hover:text-blue-400">Courses</a></li> */}
                             <li><a href="https://shubhlinks.vercel.app" target="_blank" className="hover:text-blue-400">Contact</a></li>
+                            <li><a href="https://studywithshubh.vercel.app" className="hover:text-blue-400">Old Website</a></li>
                         </ul>
                     </div>
 

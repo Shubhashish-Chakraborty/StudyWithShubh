@@ -22,7 +22,7 @@ export const Home = () => {
                 </div>
 
                 {/* Subtitle Section */}
-                <div className="text-custom-4 text-lg md:text-2xl text-center font-bold">
+                <div className="text-custom-4 text-lg md:text-2xl text-center animate-bounce font-bold">
                     Join Our Courses to Master Coding, Computer Science, Web Development, and Beyond!
                 </div>
 
