@@ -16,7 +16,6 @@ export const AddCourses = () => {
 
     useEffect(() => {
         const token = localStorage.getItem("token");
-        // Redirect if no token or if the role is not 'admin'
         if (!token) {
             navigate("/login");
             return;
@@ -61,6 +60,40 @@ export const AddCourses = () => {
         }
     };
 
+    const handleUpdateCourse = async () => {
+        const title = titleRef.current?.value;
+        const lectureTitle = lectureTitleRef.current?.value;
+        const videoURL = videoURLRef.current?.value;
+        const notesURL = notesURLRef.current?.value;
+
+        if (!title || !lectureTitle || !videoURL) {
+            alert("Please fill in all required fields.");
+            return;
+        }
+
+        const newLecture = {
+            title: lectureTitle,
+            videoURL: videoURL,
+            notesURL: notesURL
+        };
+
+        try {
+            const token = localStorage.getItem("token");
+            await axios.patch(`${BACKEND_URL}/api/courses/update`, {
+                title,
+                newLecture
+            }, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            alert("Lecture updated successfully!");
+        } catch (error) {
+            console.error("Error updating course:", error);
+            alert("Failed to update course.");
+        }
+    };
+
     return (
         <div className="text-white">
             <h1 className="text-xl text-emerald-300 md:text-4xl mb-10 text-center animate-bounce">Add Course Content!</h1>
@@ -75,8 +108,9 @@ export const AddCourses = () => {
                 <Input type="text" placeholder="Video URL:" ref={videoURLRef} />
                 <Input type="text" placeholder="Notes URL:" ref={notesURLRef} />
 
-                <div className="flex justify-center">
+                <div className="md:flex md:flex-row items-center flex flex-col justify-center gap-4">
                     <Button onClick={handleAddCourse} variant="primary" text="Add Content" />
+                    <Button onClick={handleUpdateCourse} variant="secondary" text="Update Content" />
                 </div>
             </div>
         </div>
