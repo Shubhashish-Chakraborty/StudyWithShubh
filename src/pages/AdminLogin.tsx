@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { BACKEND_URL } from "../config";
 
-export const LoginPage = () => {
+export const AdminLogin = () => {
     const navigate = useNavigate();
 
     const emailRef = useRef<HTMLInputElement>(null);
@@ -28,7 +28,7 @@ export const LoginPage = () => {
         }
 
         try {
-            const response = await axios.post(`${BACKEND_URL}/api/login`, {
+            const response = await axios.post(`${BACKEND_URL}/api/login/admin`, {
                 email,
                 password,
             });
@@ -50,10 +50,13 @@ export const LoginPage = () => {
     };
 
     return (
-        <div className="my-12 bg-custom-1 flex items-center justify-center px-4">
+        <div className="my-12 bg-custom-1 flex flex-col items-center justify-center px-4">
+            <h1 className="text-red-400 text-xl md:text-4xl font-extrabold animate-pulse cursor-pointer hover:-translate-y-4 transition-all duration-500">
+                ONLY FOR ADMIN
+            </h1>
             <div className="bg-gray-800 p-8 rounded-lg shadow-md w-full max-w-md sm:w-96 md:w-80 lg:w-96 xl:w-96">
-                <h1 className="text-2xl font-bold text-white text-center mb-6">
-                    Login to Your Account
+                <h1 className="text-2xl font-bold text-blue-500 hover:underline cursor-pointer text-center mb-6">
+                    Login as Admin
                 </h1>
 
                 <div className="space-y-4">
@@ -66,7 +69,7 @@ export const LoginPage = () => {
                     <div className="flex justify-center">
                         <Button
                             text="Login"
-                            variant="primary"
+                            variant="other"
                             endIcon={<Login />}
                             onClick={handleLogin}
                         />
@@ -84,9 +87,6 @@ export const LoginPage = () => {
                         Sign Up
                     </span>
                 </p>
-                <div className="flex justify-center">
-                    <Button onClick={() => {navigate('/admin/login')}} text="Admin Login" variant="admin"/>
-                </div>
             </div>
         </div>
     );

@@ -9,6 +9,8 @@ import { SignupPage } from "./pages/Signup";
 
 import { Cs11 } from "./courses/Cs11";
 import { Ip11 } from "./courses/Ip11";
+import { AdminLogin } from "./pages/AdminLogin";
+import { AddCourses } from "./courses/AddCourses";
 
 export default function App() {
     return (
@@ -21,6 +23,8 @@ export default function App() {
                         <Route path="about" element={<About />} />
                         <Route path="login" element={<LoginPage />} />
                         <Route path="signup" element={<SignupPage />} />
+                        <Route path="admin/login" element={<AdminLogin />} />
+                        <Route path="courses/addCourses" element={<AddCourses />} />
 
                         <Route path="/courses/ip11" element={<Ip11/>} />
                         <Route path="/courses/cs11" element={<Cs11/>} />
