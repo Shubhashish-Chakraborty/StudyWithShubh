@@ -25,6 +25,18 @@ export const DemoLectures = () => {
                     videoDriveUrl="https://drive.google.com/file/d/1vGHhAwnKZ60TOlDlq3NIiDIs9xsdKdgd/preview" 
                 />
                 <DemoLectureBox 
+                    title="Decimal Division Cases: || Class-11th || Computer Science:" 
+                    videoDriveUrl="https://drive.google.com/file/d/1HOeMjVsZ79-9TMLXxQA_TLZ_sqJZSZjq/preview" 
+                />
+                <DemoLectureBox 
+                    title="Python-Math Expressions: || Class-11th || Computer Science:" 
+                    videoDriveUrl="https://drive.google.com/file/d/1NCD1jC_ofXvmeIZyidYvXNXpK1PTN7xB/preview" 
+                />
+                <DemoLectureBox 
+                    title="Basics of Loops-For,While & Some Questions: || Class-11th || Computer Science:" 
+                    videoDriveUrl="https://drive.google.com/file/d/12IBSOybGCFy56g_-_fu2mxOU_KirQECh/preview" 
+                />
+                <DemoLectureBox 
                     title="Short Demo for Computer Science Students" 
                     videoDriveUrl="https://drive.google.com/file/d/1KC0Mijq9LKxgsgXhnY7BXnLcwaVMb2Ko/preview" 
                 />
