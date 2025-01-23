@@ -11,6 +11,7 @@ import { Cs11 } from "./courses/Cs11";
 import { Ip11 } from "./courses/Ip11";
 import { AdminLogin } from "./pages/AdminLogin";
 import { AddCourses } from "./courses/AddCourses";
+import { OtherContent } from "./pages/OtherContent";
 
 export default function App() {
     return (
@@ -23,6 +24,7 @@ export default function App() {
                         <Route path="about" element={<About />} />
                         <Route path="login" element={<LoginPage />} />
                         <Route path="signup" element={<SignupPage />} />
+                        <Route path="guide" element={<OtherContent />} />
                         <Route path="admin/login" element={<AdminLogin />} />
                         <Route path="courses/addCourses" element={<AddCourses />} />
 
