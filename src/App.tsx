@@ -13,7 +13,12 @@ import { AdminLogin } from "./pages/AdminLogin";
 import { AddCourses } from "./courses/AddCourses";
 import { OtherContent } from "./pages/OtherContent";
 
+import { Sem } from "./components/ExternalLink";
+
 export default function App() {
+
+    
+
     return (
         <div className="min-h-screen bg-custom-1 flex flex-col">
             <BrowserRouter>
@@ -28,9 +33,11 @@ export default function App() {
                         <Route path="admin/login" element={<AdminLogin />} />
                         <Route path="courses/addCourses" element={<AddCourses />} />
 
-                        <Route path="/courses/ip11" element={<Ip11/>} />
-                        <Route path="/courses/cs11" element={<Cs11/>} />
-                        
+                        <Route path="/courses/ip11" element={<Ip11 />} />
+                        <Route path="/courses/cs11" element={<Cs11 />} />
+
+                        <Route path="sem" element={<Sem/>}/>
+
                         <Route path="*" element={<NotFound />} />
                     </Route>
                 </Routes>
