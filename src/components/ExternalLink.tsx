@@ -9,3 +9,11 @@ export const Sem = () => {
 
     return null;
 }
+
+export const Python_Roadmap = () => {
+    useEffect(() => {
+        window.location.href = "https://chivalrous-hydrofoil-427.notion.site/Python_RoadMap-17f4a80d73c180d6a606d34ad5534aa4";
+    } , [])
+
+    return null;
+}

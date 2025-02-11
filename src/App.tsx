@@ -13,7 +13,7 @@ import { AdminLogin } from "./pages/AdminLogin";
 import { AddCourses } from "./courses/AddCourses";
 import { OtherContent } from "./pages/OtherContent";
 
-import { Sem } from "./components/ExternalLink";
+import { Python_Roadmap, Sem } from "./components/ExternalLink";
 
 export default function App() {
 
@@ -37,6 +37,7 @@ export default function App() {
                         <Route path="/courses/cs11" element={<Cs11 />} />
 
                         <Route path="sem" element={<Sem/>}/>
+                        <Route path="python_roadmap" element={<Python_Roadmap/>}/>
 
                         <Route path="*" element={<NotFound />} />
                     </Route>
