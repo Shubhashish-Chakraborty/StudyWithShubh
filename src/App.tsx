@@ -37,7 +37,7 @@ export default function App() {
                         <Route path="/courses/cs11" element={<Cs11 />} />
 
                         <Route path="sem" element={<Sem/>}/>
-                        <Route path="python_roadmap" element={<Python_Roadmap/>}/>
+                        <Route path="python" element={<Python_Roadmap/>}/>
 
                         <Route path="*" element={<NotFound />} />
                     </Route>
