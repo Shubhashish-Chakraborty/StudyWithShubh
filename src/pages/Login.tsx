@@ -84,9 +84,6 @@ export const LoginPage = () => {
                         Sign Up
                     </span>
                 </p>
-                <div className="flex justify-center">
-                    <Button onClick={() => {navigate('/admin/login')}} text="Admin Login" variant="admin"/>
-                </div>
             </div>
         </div>
     );
