@@ -13,7 +13,7 @@ import { AdminLogin } from "./pages/AdminLogin";
 import { AddCourses } from "./courses/AddCourses";
 import { OtherContent } from "./pages/OtherContent";
 
-import { Python_Roadmap, Sem } from "./components/ExternalLink";
+import { Python_Roadmap, Sem, Deploy_Backend } from "./components/ExternalLink";
 
 export default function App() {
 
@@ -38,6 +38,7 @@ export default function App() {
 
                         <Route path="sem" element={<Sem/>}/>
                         <Route path="python" element={<Python_Roadmap/>}/>
+			<Route path="deploy_typescript_backend" element={<Deploy_Backend/>}/>			
 
                         <Route path="*" element={<NotFound />} />
                     </Route>

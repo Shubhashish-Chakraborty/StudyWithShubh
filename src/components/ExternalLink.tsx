@@ -17,3 +17,11 @@ export const Python_Roadmap = () => {
 
     return null;
 }
+
+export const Deploy_Backend = () => {
+    useEffect(() => {
+        window.location.href = "https://chivalrous-hydrofoil-427.notion.site/Build-Deploy-TypeScript-NodeJS-Backend-19c4a80d73c18007af45c277cec4f5a0";
+    } , [])
+    
+    return null;
+}
