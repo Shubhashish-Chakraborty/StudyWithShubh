@@ -25,3 +25,11 @@ export const Deploy_Backend = () => {
     
     return null;
 }
+
+export const IpCode = () => {
+    useEffect(() => {
+        window.location.href = "https://ipcode.vercel.app";
+    } , [])
+    
+    return null;
+}
