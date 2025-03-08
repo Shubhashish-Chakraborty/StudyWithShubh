@@ -7,6 +7,7 @@ import { Button } from "./ui/Button";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Menu } from "../icons/NavbarIcons/Menu";
+import { InfoBanner } from "./temp/Infobar";
 
 const commonNavbarStyles =
     "flex flex-col items-center py-1 px-5 rounded-xl cursor-pointer font-bold hover:-translate-y-2 transition-all duration-500 shadow-md";
@@ -30,6 +31,9 @@ export const Navbar = () => {
 
     return (
         <>
+            <div>
+                <InfoBanner/>
+            </div>
             <div className="bg-custom-2 sticky top-0 z-50 backdrop-blur-lg flex justify-between items-center px-4 py-4 md:px-16 md:py-8">
                 {/* Logo Section */}
                 <div
@@ -56,27 +60,24 @@ export const Navbar = () => {
                 <div className="hidden md:flex justify-center gap-6 text-white">
                     <div
                         onClick={() => navigate('/')}
-                        className={`${commonNavbarStyles} ${
-                            isActive('/') ? 'bg-blue-700 text-white hover:bg-blue-800' : 'bg-white text-black hover:bg-blue-700 hover:text-white'
-                        }`}
+                        className={`${commonNavbarStyles} ${isActive('/') ? 'bg-blue-700 text-white hover:bg-blue-800' : 'bg-white text-black hover:bg-blue-700 hover:text-white'
+                            }`}
                     >
                         <Home />
                         Home
                     </div>
                     <div
                         onClick={() => navigate('/demo')}
-                        className={`${commonNavbarStyles} ${
-                            isActive('/demo') ? 'bg-blue-700 text-white hover:bg-blue-800' : 'bg-white text-black hover:bg-blue-700 hover:text-white'
-                        }`}
+                        className={`${commonNavbarStyles} ${isActive('/demo') ? 'bg-blue-700 text-white hover:bg-blue-800' : 'bg-white text-black hover:bg-blue-700 hover:text-white'
+                            }`}
                     >
                         <DemoLectures />
                         Demo Lectures
                     </div>
                     <div
                         onClick={() => navigate('/about')}
-                        className={`${commonNavbarStyles} ${
-                            isActive('/about') ? 'bg-blue-700 text-white hover:bg-blue-800' : 'bg-white text-black hover:bg-blue-700 hover:text-white'
-                        }`}
+                        className={`${commonNavbarStyles} ${isActive('/about') ? 'bg-blue-700 text-white hover:bg-blue-800' : 'bg-white text-black hover:bg-blue-700 hover:text-white'
+                            }`}
                     >
                         <About />
                         About
@@ -116,9 +117,8 @@ export const Navbar = () => {
                             navigate('/');
                             setIsMenuOpen(false);
                         }}
-                        className={`${commonNavbarStyles} ${
-                            isActive('/') ? 'bg-blue-700 text-white hover:bg-blue-800' : 'bg-white text-black hover:bg-blue-700 hover:text-white'
-                        }`}
+                        className={`${commonNavbarStyles} ${isActive('/') ? 'bg-blue-700 text-white hover:bg-blue-800' : 'bg-white text-black hover:bg-blue-700 hover:text-white'
+                            }`}
                     >
                         <Home />
                         Home
@@ -128,9 +128,8 @@ export const Navbar = () => {
                             navigate('/demo');
                             setIsMenuOpen(false);
                         }}
-                        className={`${commonNavbarStyles} ${
-                            isActive('/demo') ? 'bg-blue-700 text-white hover:bg-blue-800' : 'bg-white text-black hover:bg-blue-700 hover:text-white'
-                        }`}
+                        className={`${commonNavbarStyles} ${isActive('/demo') ? 'bg-blue-700 text-white hover:bg-blue-800' : 'bg-white text-black hover:bg-blue-700 hover:text-white'
+                            }`}
                     >
                         <DemoLectures />
                         Demo Lectures
@@ -140,9 +139,8 @@ export const Navbar = () => {
                             navigate('/about');
                             setIsMenuOpen(false);
                         }}
-                        className={`${commonNavbarStyles} ${
-                            isActive('/about') ? 'bg-blue-700 text-white hover:bg-blue-800' : 'bg-white text-black hover:bg-blue-700 hover:text-white'
-                        }`}
+                        className={`${commonNavbarStyles} ${isActive('/about') ? 'bg-blue-700 text-white hover:bg-blue-800' : 'bg-white text-black hover:bg-blue-700 hover:text-white'
+                            }`}
                     >
                         <div className="flex flex-col items-center">
                             <About />
