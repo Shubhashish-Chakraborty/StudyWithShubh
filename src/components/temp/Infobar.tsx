@@ -26,7 +26,7 @@ export const InfoBanner = () => {
                     </div>
                     <div>
                         <p className="text-sm text-center md:text-xl font-bold animate-pulse">
-                            Website Under Development! Improvements coming soon...
+                            Website's New Version Launched! Checkout:  <a href="https://www.studywithshubh.tech">studywithshubh.tech</a>
                         </p>
                     </div>
                     <div>
